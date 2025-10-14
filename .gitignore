@@ -1,0 +1,16 @@
+/.env
+/memorization_score/results/
+/rag/results/
+/rag/results_llm_retrival_reranker/
+/rag/results_new_rag_fixed_copy/
+/rag/results_question_with_answers/
+/llm_judge/results/
+/llm_judge/results_llm_retrival_reranker_llama_3_3/
+/llm_judge/results_new_rag_llama_3_3/
+/llm_judge/statistic_test/results/
+/generate_questions/results/
+/dataset/reduced_by_token_count/
+/dataset/results/
+/dataset/extracted_wikipedia_full.json
+/dataset/extracted_wikipedia_token_limit.json
+/dataset/extracted_wikipedia_token_limit_records_5000.json

@@ -1,0 +1,20 @@
+1. Dataset: 
+- params, inc,
+2. Memorization Score - Perplexity
+- per model
+- token and avg token count
+- extra dataset params here
+3. Dataset buckets
+4. Generate question & answer dataset
+
+-----
+question generating - binary
+question distribiution - binary statistic tests
+
+
+---
+podzial na 3 grupy z przykladami o podobnej dlugosci tokenow, podzielic na 3 buckety tak aby w kazdym bylo po 100 przykladow
+-ew sprawdzic srednia dlugosc tokenow w czerwonym ogonie i wybrac podobne dla zoltych i zielonych
+
+- dla pelnego bucketu poor policz srednia ilosc tokenow
+- wybierz 100 probek z najblizszymi wartosciami ilosci tokenow od średniej ilości tokenow w buckecie poor, dla bucketu poor, avg, i good
