@@ -1,6 +1,15 @@
-/.env
-./venv
+# Python cache + virtual environments
 __pycache__/
+venv/
+*.py[cod]
+
+# IDE settings
+.idea/
+
+# Secrets
+.env
+
+# Data / artifacts
 *.json
 *.csv
 *.xlsx
