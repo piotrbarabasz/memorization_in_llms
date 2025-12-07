@@ -3,7 +3,6 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-# --- Paths (your existing setup) ---
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RESULTS_DIR = os.path.join(BASE_DIR, "results")
 
@@ -13,14 +12,12 @@ MODEL_FILES = {
     "mistral-7b_v01": os.path.join(RESULTS_DIR, "mistral-7b_v01_perplexity.json"),
 }
 
-# Pretty names for plot titles
 MODEL_LABELS = {
     "deepseek_llm_7b": "DeepSeek 7B",
     "llama_2_7b_hf": "Llama 7B",
     "mistral-7b_v01": "Mistral 7B",
 }
 
-# Bucket configs: (lower_bound, upper_bound_or_None, bucket_name)
 BUCKET_CONFIG = {
     "deepseek_llm_7b": [
         (0, 10, "good"),
@@ -39,7 +36,6 @@ BUCKET_CONFIG = {
     ],
 }
 
-# --- Output folder: in same location as this .py file ---
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BUCKETED_HIST_DIR = os.path.join(SCRIPT_DIR, "bucketed_histograms")
 os.makedirs(BUCKETED_HIST_DIR, exist_ok=True)
@@ -59,13 +55,12 @@ def load_adjusted_perplexities(path: str):
 
 
 BUCKET_QUANTILES = {
-    # good ≈ 0–78%, average ≈ 78–93%, poor ≈ 7% top tail
     "deepseek_llm_7b": (0.78, 0.93),
     "llama_2_7b_hf": (0.80, 0.94),
     "mistral-7b_v01": (0.80, 0.94),
 }
 
-USE_LOG_FOR_BUCKETS = True  # log-transform for heavy right-tailed dists
+USE_LOG_FOR_BUCKETS = True
 
 
 def _dynamic_bucket_cfg(model_name: str, values):
@@ -73,7 +68,6 @@ def _dynamic_bucket_cfg(model_name: str, values):
     Build (lower, upper, name) tuples using quantiles instead of fixed numbers.
     """
     if model_name not in BUCKET_QUANTILES:
-        # fallback to your hand-tuned config if no quantiles defined
         return BUCKET_CONFIG[model_name]
 
     good_q, avg_q = BUCKET_QUANTILES[model_name]
@@ -87,7 +81,6 @@ def _dynamic_bucket_cfg(model_name: str, values):
     b1 = float(np.exp(q_good) if USE_LOG_FOR_BUCKETS else q_good)
     b2 = float(np.exp(q_avg)  if USE_LOG_FOR_BUCKETS else q_avg)
 
-    # standard 3 buckets: [0, b1), [b1, b2), [b2, +inf)
     return [
         (0.0, b1, "good"),
         (b1, b2, "average"),
@@ -124,13 +117,11 @@ def save_bucketed_histogram(model_name: str, values):
 
     buckets = bucket_values(model_name, values)
 
-    # Common bins for all buckets so they line up nicely
     vmin, vmax = min(values), max(values)
     bins = np.linspace(vmin, vmax, 60)
 
     fig, ax = plt.subplots(figsize=(10, 5))
 
-    # Overlaid histograms for each bucket
     for bucket_name in ["good", "average", "poor"]:
         bucket_vals = buckets[bucket_name]
         if not bucket_vals:

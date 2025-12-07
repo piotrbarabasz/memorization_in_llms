@@ -53,7 +53,6 @@ def process_dataset(model_name: str, file_path: str):
     # plt.savefig(os.path.join(OUTPUT_DIR, f"{model_name}_perplexity_vs_length_hist2d.png"), dpi=150, bbox_inches="tight")
     # plt.close()
 
-    # ⬇⬇ Nowy wykres: Perplexity vs Token Count (średnia w przedziałach)
     bins = np.linspace(min(token_counts), max(token_counts), 10)  # 30 przedziałów długości
     bin_indices = np.digitize(token_counts, bins)
     bin_means = []
@@ -63,7 +62,6 @@ def process_dataset(model_name: str, file_path: str):
         bin_perplexities = [p for p, b in zip(perplexities, bin_indices) if b == i]
         if bin_perplexities:
             bin_means.append(np.mean(bin_perplexities))
-            # środek przedziału do osi X
             bin_centers.append((bins[i-1] + bins[i]) / 2)
 
     # plt.figure()

@@ -71,15 +71,13 @@ def save_bucket_json(model, bucket, ids, avg_poor_tc, wiki_by_id, results_by_id)
 
 
 def main():
-    # Load base wiki slice
     wiki_by_id = load_wikipedia(DATASET_PATH)
 
-    # Process each model
     for model, res_path in MODEL_FILES.items():
-        print(f"\n▶ Processing {model}")
+        print(f"\nProcessing {model}")
 
         if not os.path.exists(res_path):
-            print(f"  ! missing: {res_path}")
+            print(f"missing: {res_path}")
             continue
 
         with open(res_path, "r", encoding="utf-8") as f:

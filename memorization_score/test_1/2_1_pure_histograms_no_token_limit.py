@@ -34,7 +34,6 @@ def load_adjusted_perplexities(path: str):
         if "adjusted_perplexity" in inner:
             values.append(inner["adjusted_perplexity"])
         else:
-            # optional: debug if some record is missing the field
             print(f"[WARN] Missing 'adjusted_perplexity' in item id={item.get('id')}")
     return values
 
@@ -42,7 +41,7 @@ def load_adjusted_perplexities(path: str):
 def save_histogram(values, model_name: str):
     """Create and save histogram for a given model."""
     plt.figure()
-    plt.hist(values, bins=30)  # you can tweak number of bins if needed
+    plt.hist(values, bins=30)
     plt.title(f"Adjusted Perplexity Histogram - {model_name}")
     plt.xlabel("Adjusted Perplexity")
     plt.ylabel("Frequency")
