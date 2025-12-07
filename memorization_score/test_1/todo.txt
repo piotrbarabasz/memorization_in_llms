@@ -1,0 +1,2 @@
+Analiza reczna przykladow (poor good po 10 przykladow skrajnych)
+Wrzucic kod i dane na repo

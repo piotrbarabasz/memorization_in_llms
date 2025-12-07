@@ -1,0 +1,8 @@
+torch 
+transformers 
+bitsandbytes 
+tqdm 
+datasets 
+scikit-learn 
+numpy 
+accelerate

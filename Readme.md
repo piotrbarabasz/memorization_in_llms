@@ -28,4 +28,4 @@ python rag_eval.py deepseek_llm_7b advanced_rag poor +
 
 python rag_eval.py deepseek_llm_7b modular_rag good + 
 python rag_eval.py deepseek_llm_7b modular_rag average +
-python rag_eval.py deepseek_llm_7b modular_rag poor
+python rag_eval.py deepseek_llm_7b modular_rag poor +

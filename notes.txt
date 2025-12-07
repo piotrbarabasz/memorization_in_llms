@@ -18,3 +18,18 @@ podzial na 3 grupy z przykladami o podobnej dlugosci tokenow, podzielic na 3 buc
 
 - dla pelnego bucketu poor policz srednia ilosc tokenow
 - wybierz 100 probek z najblizszymi wartosciami ilosci tokenow od średniej ilości tokenow w buckecie poor, dla bucketu poor, avg, i good
+
+
+
+
+1. Full Dataset -> 20k samples
+2. Reduced Dataset -> 5k samples
+    - lower bond 200 tokens per sample
+    - upper bond 1024 tokens per sample (models input limit)
+    - whatever left reduce randomly do 5k samples
+
+
+
+TODO
+wyjasnik wyniki esperymentu, co wyszlo co nie i dlaczego
+tzn czy to co wychodzi na liczbach wychodzi tez w tekscie
